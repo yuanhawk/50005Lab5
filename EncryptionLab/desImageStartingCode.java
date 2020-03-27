@@ -4,7 +4,7 @@ import java.io.*;
 import java.awt.image.BufferedImage;
 import java.nio.*;
 import javax.crypto.*;
-import javax.xml.bind.DatatypeConverter;
+import java.util.Base64;
 
 
 public class DesImageSolution {

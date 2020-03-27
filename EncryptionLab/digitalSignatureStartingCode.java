@@ -1,4 +1,4 @@
-import javax.xml.bind.DatatypeConverter;
+import java.util.Base64;
 import javax.crypto.Cipher;
 import java.io.BufferedReader;
 import java.io.FileReader;
