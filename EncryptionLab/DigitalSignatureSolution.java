@@ -35,13 +35,13 @@ public class DigitalSignatureSolution {
 //TODO: encrypt digest message
 
 
-//TODO: print the encrypted message (in base64format String using DatatypeConverter) 
+//TODO: print the encrypted message (in base64format String using Base64) 
 
 //TODO: Create RSA("RSA/ECB/PKCS1Padding") cipher object and initialize is as decrypt mode, use PUBLIC key.           
 
 //TODO: decrypt message
 
-//TODO: print the decrypted message (in base64format String using DatatypeConverter), compare with origin digest 
+//TODO: print the decrypted message (in base64format String using Base64), compare with origin digest 
 
 
 

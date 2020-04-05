@@ -26,7 +26,7 @@ public class DesSolution {
 
 //TODO: print the length of output encrypted byte[], compare the length of file smallSize.txt and largeSize.txt
 
-//TODO: do format conversion. Turn the encrypted byte[] format into base64format String using DatatypeConverter
+//TODO: do format conversion. Turn the encrypted byte[] format into base64format String using Base64
 
 //TODO: print the encrypted message (in base64format String format)
 
