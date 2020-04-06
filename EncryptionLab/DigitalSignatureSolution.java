@@ -11,7 +11,7 @@ public class DigitalSignatureSolution {
 
     public static void main(String[] args) throws Exception {
 //Read the text file and save to String data
-            String fileName = "smallSize.txt";
+            String fileName = "shorttext.txt";
             String data = "";
             String line;
             BufferedReader bufferedReader = new BufferedReader( new FileReader(fileName));
@@ -26,7 +26,7 @@ public class DigitalSignatureSolution {
 //TODO: Calculate message digest, using MD5 hash function
 
 
-//TODO: print the length of output digest byte[], compare the length of file smallSize.txt and largeSize.txt
+//TODO: print the length of output digest byte[], compare the length of file shorttext.txt and longtext.txt
 
            
 //TODO: Create RSA("RSA/ECB/PKCS1Padding") cipher object and initialize is as encrypt mode, use PRIVATE key.
