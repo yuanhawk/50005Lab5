@@ -24,7 +24,7 @@ public class DesSolution {
 
 //TODO: do encryption, by calling method Cipher.doFinal().
 
-//TODO: print the length of output encrypted byte[], compare the length of file shorttext.txt and largetext.txt
+//TODO: print the length of output encrypted byte[], compare the length of file shorttext.txt and longtext.txt
 
 //TODO: do format conversion. Turn the encrypted byte[] format into base64format String using Base64
 
