@@ -92,14 +92,7 @@ public class DesSolution {
 
     //TODO: create cipher object, initialize the ciphers with the given key, choose encryption mode as DES
     public Cipher initCipher(String type, int mode, SecretKey key) {
-        try {
-            Cipher desCipher = Cipher.getInstance(String.format("%s/%s/%s", ENCRYPTION, type, BLOCK_SIZE));
-            desCipher.init(mode, key);
-            return desCipher;
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return DigitalSignatureSolution.getCipher(type, mode, key, ENCRYPTION, BLOCK_SIZE);
     }
 
     public byte[] generateEncryptedByte(Cipher c, String s) {

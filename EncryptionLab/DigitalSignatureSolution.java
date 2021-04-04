@@ -81,8 +81,12 @@ public class DigitalSignatureSolution {
     }
 
     public Cipher initCipher(String type, int mode, Key key) {
+        return getCipher(type, mode, key, ENCRYPTION, BLOCK_SIZE);
+    }
+
+    static Cipher getCipher(String type, int mode, Key key, String encryption, String blockSize) {
         try {
-            Cipher rsaCipher = Cipher.getInstance(String.format("%s/%s/%s", ENCRYPTION, type, BLOCK_SIZE));
+            Cipher rsaCipher = Cipher.getInstance(String.format("%s/%s/%s", encryption, type, blockSize));
             rsaCipher.init(mode, key);
             return rsaCipher;
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException e) {
