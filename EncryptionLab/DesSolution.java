@@ -19,17 +19,14 @@ public class DesSolution {
 
 
     public static void main(String[] args) {
-        String fileName = "shorttext.txt";
-
-        StringBuilder sb = desSoln.initStringFromDir(SHORTTEXT);
-        StringBuilder sb2 = desSoln.initStringFromDir(LONGTEXT);
-//        System.out.println("Original content: "+ shortText);
+        StringBuilder sb = initStringFromDir(SHORTTEXT);
+        StringBuilder sb2 = initStringFromDir(LONGTEXT);
 
         desEncrypt(SHORTTEXT, sb);
-        desEncrypt(LONGTEXT,sb2);
+        desEncrypt(LONGTEXT, sb2);
     }
 
-    private StringBuilder initStringFromDir(String file) {
+    public static StringBuilder initStringFromDir(String file) {
         StringBuilder text = new StringBuilder();
         String line;
         try {
@@ -56,12 +53,9 @@ public class DesSolution {
             //TODO: Question 3
             System.out.println(new String(encryptedBytesArray));
 
-            //TODO: do format conversion. Turn the encrypted byte[] format into base64format String using Base64
-            String base64format = Base64.getEncoder().encodeToString(encryptedBytesArray);
-
             //TODO: print the encrypted message (in base64format String format)
             System.out.println("\nEncrypted message content:");
-            System.out.println(base64format);
+            System.out.println(desSoln.getBase64Format(encryptedBytesArray));
 
             //TODO: create cipher object, initialize the ciphers with the given key, choose decryption mode as DES
             Cipher desCipher2 = desSoln.initCipher(ECB, Cipher.DECRYPT_MODE, desKey);
@@ -77,6 +71,12 @@ public class DesSolution {
                 System.out.println();
             }
         }
+    }
+
+    //TODO: do format conversion. Turn the encrypted byte[] format into base64format String using Base64
+    public String getBase64Format(byte[] byteArray) {
+        //TODO: do format conversion. Turn the encrypted byte[] format into base64format String using Base64
+        return Base64.getEncoder().encodeToString(byteArray);
     }
 
     //TODO: generate secret key using DES algorithm
@@ -102,7 +102,7 @@ public class DesSolution {
         return null;
     }
 
-    private byte[] generateEncryptedByte(Cipher c, String s) {
+    public byte[] generateEncryptedByte(Cipher c, String s) {
         return generateByte(c, s.getBytes());
     }
 

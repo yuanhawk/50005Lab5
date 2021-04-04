@@ -33,8 +33,8 @@ public class DesImageSolution {
         image_length = img.getHeight();
         // byte[][] imageArray = new byte[image_width][image_length];
         int[][] imageArray = new int[image_width][image_length];
-        for(int idx = image_width - 1; idx > -1; idx--) {
-            for(int idy = image_length - 1; idy > -1; idy--) {
+        for (int idx = image_width - 1; idx > -1; idx--) {
+            for (int idy = image_length - 1; idy > -1; idy--) {
                 int color = img.getRGB(idx, idy);
                 imageArray[idx][idy] = color;
             }
@@ -52,14 +52,14 @@ public class DesImageSolution {
         // define output BufferedImage, set size and format
         BufferedImage outImage = new BufferedImage(image_width, image_length, BufferedImage.TYPE_3BYTE_BGR);
 
-        for(int idx = image_width - 1; idx > -1; idx--) {
+        for (int idx = image_width - 1; idx > -1; idx--) {
             // convert each column int[] into a byte[] (each_width_pixel)
-            byte[] each_width_pixel = new byte[4*image_length];
-            for(int idy = image_length - 1; idy > -1; idy--) {
+            byte[] each_width_pixel = new byte[4 * image_length];
+            for (int idy = image_length - 1; idy > -1; idy--) {
                 ByteBuffer dbuf = ByteBuffer.allocate(4);
                 dbuf.putInt(imageArray[idx][idy]);
                 byte[] bytes = dbuf.array();
-                System.arraycopy(bytes, 0, each_width_pixel, idy*4, 4);
+                System.arraycopy(bytes, 0, each_width_pixel, idy * 4, 4);
             }
             // TODO: encrypt each column or row bytes
             byte[] encryptedBytesArray = desSoln.generateByte(cipher, each_width_pixel);
@@ -76,7 +76,7 @@ public class DesImageSolution {
         }
 
         //write outImage into file
-        ImageIO.write(outImage, "BMP",new File("triangle_new.bmp"));
+        ImageIO.write(outImage, "BMP", new File("triangle_new.bmp"));
     }
 
     private static void encryptImage(String file, String type) throws IOException {
@@ -88,8 +88,8 @@ public class DesImageSolution {
         image_length = img.getHeight();
         // byte[][] imageArray = new byte[image_width][image_length];
         int[][] imageArray = new int[image_width][image_length];
-        for(int idx = 0; idx < image_width; idx++) {
-            for(int idy = 0; idy < image_length; idy++) {
+        for (int idx = 0; idx < image_width; idx++) {
+            for (int idy = 0; idy < image_length; idy++) {
                 int color = img.getRGB(idx, idy);
                 imageArray[idx][idy] = color;
             }
@@ -107,14 +107,14 @@ public class DesImageSolution {
         // define output BufferedImage, set size and format
         BufferedImage outImage = new BufferedImage(image_width, image_length, BufferedImage.TYPE_3BYTE_BGR);
 
-        for(int idx = 0; idx < image_width; idx++) {
+        for (int idx = 0; idx < image_width; idx++) {
             // convert each column int[] into a byte[] (each_width_pixel)
-            byte[] each_width_pixel = new byte[4*image_length];
-            for(int idy = 0; idy < image_length; idy++) {
+            byte[] each_width_pixel = new byte[4 * image_length];
+            for (int idy = 0; idy < image_length; idy++) {
                 ByteBuffer dbuf = ByteBuffer.allocate(4);
                 dbuf.putInt(imageArray[idx][idy]);
                 byte[] bytes = dbuf.array();
-                System.arraycopy(bytes, 0, each_width_pixel, idy*4, 4);
+                System.arraycopy(bytes, 0, each_width_pixel, idy * 4, 4);
             }
             // TODO: encrypt each column or row bytes
             byte[] encryptedBytesArray = desSoln.generateByte(cipher, each_width_pixel);
@@ -131,6 +131,6 @@ public class DesImageSolution {
         }
 
         //write outImage into file
-        ImageIO.write(outImage, "BMP",new File(String.format("En%s%s", type, file)));
+        ImageIO.write(outImage, "BMP", new File(String.format("En%s%s", type, file)));
     }
 }
