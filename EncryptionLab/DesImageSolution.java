@@ -120,10 +120,12 @@ public class DesImageSolution {
             byte[] encryptedBytesArray = desSoln.generateByte(cipher, each_width_pixel);
 
             // TODO: convert the encrypted byte[] back into int[] and write to outImage (use setRGB)
-            int[] arr = new int[encryptedBytesArray.length];
-            for (int i = 0; i < encryptedBytesArray.length; i++) {
-                arr[i] = encryptedBytesArray[i];
-            }
+            IntBuffer intBuf =
+                    ByteBuffer.wrap(encryptedBytesArray)
+                            .order(ByteOrder.BIG_ENDIAN)
+                            .asIntBuffer();
+            int[] arr = new int[intBuf.remaining()];
+            intBuf.get(arr);
 
             for (int i = 0; i < image_length; i++) {
                 outImage.setRGB(idx, i, arr[i]);
